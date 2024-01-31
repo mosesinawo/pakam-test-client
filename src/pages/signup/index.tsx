@@ -5,6 +5,7 @@ import axios from "axios";
 import { BaseUrl } from "../../config/url";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../../utils/Loader";
 
 const SignUp = () => {
   const [firstName, setfirstName] = useState("");
@@ -12,11 +13,13 @@ const SignUp = () => {
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
 
+  const [loading, setloading] = useState(false)
+
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+setloading(true)
     try {
       const res = await axios.post(`${BaseUrl}/api/auth/signup`, {
         firstName,
@@ -31,6 +34,8 @@ const SignUp = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       toast.error((error as any).message);
       console.log(error);
+    }finally{
+      setloading(false);
     }
   };
 
@@ -82,8 +87,8 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <button className="bg-green text-white text-[16px]  w-[280px] sm:w-[420px] py-[14px] rounded-xl mt-14 text-center">
-            Sign up
+          <button className="bg-green text-white text-[16px]  w-[280px] sm:w-[420px] py-[14px] rounded-xl mt-14 text-center flex justify-center items-center">
+          {loading ? <Loader /> : "Sign up"}
           </button>
         </form>
 

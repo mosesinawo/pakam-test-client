@@ -5,11 +5,13 @@ import axios from "axios";
 import { BaseUrl } from "../../config/url";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../utils/Loader";
 
 
 const Login = () => {
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
+  const [loading, setloading] = React.useState(false)
 
   const navigate = useNavigate()
   const [user, setUser] = React.useState(null);
@@ -31,7 +33,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setloading(true)
     try {
       const res = await axios.post(`${BaseUrl}/api/auth/signin`, {
         userName,
@@ -46,8 +48,11 @@ const Login = () => {
       toast.success("Login successful 🤗");
       console.log(res.data);
     } catch (error) {
-      toast.error(`${error?.message}`);
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       toast.error((error as any).message);
       console.log(error);
+    }finally{
+      setloading(false)
     }
   };
 
@@ -83,8 +88,8 @@ const Login = () => {
               />
             </div>
           </div>
-          <button className="bg-green text-white text-[16px]  w-[280px] sm:w-[420px] py-[14px] rounded-xl mt-14 text-center">
-            Sign in
+          <button className="bg-green text-white text-[16px]  w-[280px] sm:w-[420px] py-[14px] rounded-xl mt-14 text-center flex justify-center items-center">
+          {loading ? <Loader /> : "Login"}
           </button>
         </form>
 

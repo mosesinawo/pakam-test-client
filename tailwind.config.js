@@ -16,7 +16,11 @@ export default {
         green:"#005700",
         gray:"#464F54",
        
-      }
+      },
+      fontFamily: {
+        Raleway: ['Raleway', 'sans-serif'],
+        Roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],

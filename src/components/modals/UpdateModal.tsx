@@ -2,11 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 
 import Modal from "@mui/material/Modal";
-import Input from "../input";
 import { axiosInstance } from "../../config/url";
 import { toast } from "react-toastify";
 import { useLocation} from "react-router-dom";
 import Loader from "../../utils/Loader";
+import InputModal from "../input2";
 
 const style = {
   position: "absolute",
@@ -82,14 +82,14 @@ const UpdateModal: React.FC<CreateProps> = ({ open, handleClose, id }) => {
 
           <div className="flex items-start justify-start flex-col mt-12">
             <div className="flex flex-wrap items-center justify-between w-full">
-              <Input
+              <InputModal
                 textLabel="Full Name"
                 placeholder="David Pakurumo"
                 hasEye={false}
                 value={name}
                 setValue={setname}
               />
-              <Input
+              <InputModal
                 textLabel="Description"
                 placeholder="Description"
                 hasEye={false}
@@ -98,7 +98,7 @@ const UpdateModal: React.FC<CreateProps> = ({ open, handleClose, id }) => {
               />
             </div>
             <div className="mt-5">
-              <Input
+              <InputModal
                 textLabel="Quantity"
                 placeholder="Quantity"
                 hasEye={false}

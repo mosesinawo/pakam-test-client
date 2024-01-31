@@ -9,7 +9,7 @@ interface InputProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Input: React.FC<InputProps> = ({ textLabel, placeholder, hasEye, value, setValue }) => {
+const InputModal: React.FC<InputProps> = ({ textLabel, placeholder, hasEye, value, setValue }) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({ textLabel, placeholder, hasEye, value, se
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        className="w-full py-3 px-4 outline-none border border-[#E5E7EB] rounded-lg"
+        className="w-full py-3 px-4 outline-none border border-green rounded-lg"
       />
 
       {hasEye &&
@@ -43,4 +43,4 @@ const Input: React.FC<InputProps> = ({ textLabel, placeholder, hasEye, value, se
   );
 };
 
-export default Input;
+export default InputModal;
