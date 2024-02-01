@@ -78,6 +78,7 @@ const Login = () => {
                 hasEye={false}
                 value={userName}
                 setValue={setuserName}
+                checkPass={false}
               />
               <Input
                 textLabel="Password"
@@ -85,6 +86,7 @@ const Login = () => {
                 hasEye={true}
                 value={password}
                 setValue={setpassword}
+                checkPass={false}
               />
             </div>
           </div>
