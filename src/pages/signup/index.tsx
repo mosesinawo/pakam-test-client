@@ -102,7 +102,7 @@ const SignUp = () => {
                 checkPass={false}
               />
             </div>
-            <div className="flex items-center gap-10 mt-10  flex-col md:flex-row">
+            <div className="flex items-start gap-10 mt-10  flex-col md:flex-row">
               <Input
                 textLabel="Username"
                 placeholder="Enter your Username"
